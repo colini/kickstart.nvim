@@ -164,6 +164,10 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- 2026-03-19 cwi popups need borders
+-- https://samuellawrentz.com/blog/vim-lsp-hover-borders/
+vim.o.winborder = 'solid'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -388,11 +392,13 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        -- 2026-03-19 cwi Telescope seems very powerful, time to tweak.
+        defaults = {
+          path_display = {
+            -- shorten = 1,
+            truncate,
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
@@ -641,6 +647,12 @@ require('lazy').setup({
             Lua = {},
           },
         },
+
+        -- 2026-03-18 cwi try out LSP magic
+        basedpyright = {},
+
+        -- 2026-03-19 cwi maybe it's this easy
+        dockerls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -898,6 +910,19 @@ require('lazy').setup({
         end,
       })
     end,
+  },
+
+  -- 2026-03-19 cwi time to try out some tree-style file pickers
+  -- https://github.com/nvim-neo-tree/neo-tree.nvim
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons', -- optional, but recommended
+    },
+    lazy = false, -- neo-tree will lazily load itself
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
