@@ -649,6 +649,9 @@ require('lazy').setup({
         },
 
         -- 2026-03-18 cwi try out LSP magic
+        -- I think it's this easy (eg, no config here), b/c there are many
+        -- predefined configurations in this project:
+        -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
         basedpyright = {},
 
         -- 2026-03-19 cwi maybe it's this easy
