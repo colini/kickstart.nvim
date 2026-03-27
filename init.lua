@@ -157,7 +157,8 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+-- 2026-03-24 cwi 10 is too much, try 5
+vim.o.scrolloff = 5
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -167,6 +168,15 @@ vim.o.confirm = true
 -- 2026-03-19 cwi popups need borders
 -- https://samuellawrentz.com/blog/vim-lsp-hover-borders/
 vim.o.winborder = 'solid'
+
+-- 2026-03-24 cwi copying some old-school settings from vimrc
+vim.o.expandtab = true
+vim.o.shiftwidth = 4
+vim.o.ts = 4
+
+-- 2026-03-24 cwi let nvim set the window title
+vim.o.title = true
+-- vim.o.titlestring to change the format in endless ways
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
